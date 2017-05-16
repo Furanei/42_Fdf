@@ -1,0 +1,8 @@
+prendre chaque nombre separe d'espace jusqu'a max_x
+utilise un atoi sur chaque et stocker dans un int* (surment dans la struct)
+faire les calculs de modification
+put pixel avec le point de depart et le decal diago
+utilise la tech octant et la methode brehsenam
+
+
+Le cacul de Y en nb line est bon mais x prend le nb de char donc a revoir pour toute ses utilisation et malloc
