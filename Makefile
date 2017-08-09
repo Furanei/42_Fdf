@@ -6,7 +6,7 @@
 #    By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 16:27:03 by mbriffau          #+#    #+#              #
-#    Updated: 2017/05/10 00:59:25 by mbriffau         ###   ########.fr        #
+#    Updated: 2017/08/09 19:20:44 by mbriffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,7 @@ SRC_PATH = srcs
 
 
 # Sources
-SRC = \
-		main \
+SRC = main.c
 
 
 OBJ = $(SRC:.c=.o)
@@ -51,8 +50,9 @@ OBJ = $(SRC:.c=.o)
 all: tmp $(NAME)
 
 $(NAME) :
-	@$(CC) -o $(NAME) $(SRCDIR)/$(SRC) $(LIBS) $(ADDFLAGS)
+	@gcc -o $(NAME) $(CFLAGS) -lmlx libft/libft.a get_next_line/get_next_line.c $(SRCDIR)/$(SRC) srcs/display.c srcs/draw_map.c srcs/line.c srcs/fdf_malloc.c srcs/parsing.c $(ADDFLAGS)
 	@echo "\033[0;32mFDF's program Created.\033[0m"
+# besoin de compiler la lib avant fdf 
 
 tmp : 
 	@mkdir -p objs
@@ -64,3 +64,6 @@ clean :
 	rm $(NAME)
 
 #gcc main.c ../libft/libft.a ../get_next_line/get_next_line.c -framework OpenGL -framework Appkit
+
+#gcc main.c -lmlx ../libft/libft.a ../get_next_line/get_next_line.c parsing.c display.c 
+#draw_map.c -framework OpenGL -framework Appkit
