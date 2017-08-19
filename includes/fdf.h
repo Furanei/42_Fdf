@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 03:48:11 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/09 19:21:07 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/20 00:49:59 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 
 # include "../get_next_line/get_next_line.h"
+// # include "../minilibx_macos/mlx.h"
 # include "mlx.h"
 # include <stdlib.h>
 # include "./keycode.h"
@@ -23,13 +24,31 @@
 # include <fcntl.h>
 # include <math.h>
 
+#define TERM2 "dev/ttys002"
+# define INFO __FILE__, (char *)__FUNCTION__, __LINE__
+
 # define TITLE_WINDOW					"FDF"
 # define HEIGHT_WINDOW				1300
 # define WIDTH_WINDOW					2000
 
 # define VALUE_VAR_X			30
 # define VALUE_VAR_Y			20
+# define VALUE_VAR_Z			3
 
+# define LOG_CLEAR		\033[2K
+# define LOG_UP			\033[A
+# define LOG_NOCOLOR	\033[0m
+# define LOG_BOLD		\033[1m
+# define LOG_UNDERLINE	\033[4m
+# define LOG_BLINKING	\033[5m
+# define LOG_BLACK		\033[1;30m
+# define LOG_RED		\033[1;31m
+# define LOG_GREEN		\033[1;32m
+# define LOG_YELLOW		\033[1;33m
+# define LOG_BLUE		\033[1;34m
+# define LOG_VIOLET		\033[1;35m
+# define LOG_CYAN		\033[1;36m
+# define LOG_WHITE		\033[1;37m
 typedef struct		s_3d
 {
 /*
@@ -46,10 +65,18 @@ typedef struct		s_3d
 /*
 * MAP
 */
+	int		width_window;
+	int		height_window;
+
 	int		width_map;//used
 	int		height_map;//used
 	int		start_x;
 	int		start_y;
+
+	int		value_z;
+	int		decal_x;
+	int		decal_y;
+	int color;
 /*
 *donnee
 */
@@ -93,7 +120,9 @@ void		draw_line(t_3d *d);
 t_dl		*t_dl_malloc(t_dl *l);
 void		pointer_t_dl(t_3d *d, t_dl *l, t_fxy a, t_fxy b);
 int			ft_abs(int n);
-int pixel_calc(t_3d *d, char option, int right, int down);
+int			pixel_calc(t_3d *d, char option, int right, int down);
+int			my_key_funct(int keycode, t_3d *d);
+void	ft_error(char *file, char *func, int line, char *s);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 20:55:01 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/09 16:48:37 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/20 01:15:31 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ t_3d		*read_map(char *s, t_3d *d)
 		free(line);
 		n_line++;
 	}
+	d->width_window = (d->width_window = (d->width_map + (d->width_map /3)) * VALUE_VAR_X) > 2555 ?
+	2555 : d->width_window ;
+	d->height_window = (d->height_window = (d->height_map + (d->height_map / 2)) * (VALUE_VAR_Y + VALUE_VAR_Z)) > 1380 ?
+	1380 : d->height_window;
 	free((char**)d->s);
 	return (d);
 }

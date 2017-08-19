@@ -6,7 +6,7 @@
 #    By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 16:27:03 by mbriffau          #+#    #+#              #
-#    Updated: 2017/08/09 19:20:44 by mbriffau         ###   ########.fr        #
+#    Updated: 2017/08/20 00:10:23 by mbriffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,11 @@ INCDIR = includes \
 			get_next_line
 
 # Libs
-LIBS = -lmlx
+LIB_MLX = minilibx_macos/libmlx.a
+MLX = -lmlx
+LIB_FT = libft/libft.a
 
+GNL = get_next_line/get_next_line.c
 #####################
 # includes
 INC = libft
@@ -40,18 +43,47 @@ SRC_PATH = srcs
 
 
 # Sources
-SRC = main.c
-
+SRC = srcs/main.c \
+		srcs/display.c \
+		srcs/draw_map.c \
+		srcs/line.c \
+		srcs/fdf_malloc.c \
+		srcs/key_function.c \
+		srcs/parsing.c \
+		srcs/ft_error.c
 
 OBJ = $(SRC:.c=.o)
+# **************************************************************************** #
+# SPECIAL CHARS
+
+LOG_CLEAR		= \033[2K
+LOG_UP			= \033[A
+LOG_NOCOLOR		= \033[0m
+LOG_BOLD		= \033[1m
+LOG_UNDERLINE	= \033[4m
+LOG_BLINKING	= \033[5m
+LOG_BLACK		= \033[1;30m
+LOG_RED			= \033[1;31m
+LOG_GREEN		= \033[1;32m
+LOG_YELLOW		= \033[1;33m
+LOG_BLUE		= \033[1;34m
+LOG_VIOLET		= \033[1;35m
+LOG_CYAN		= \033[1;36m
+LOG_WHITE		= \033[1;37m
+
+# **************************************************************************** #
 
 # RULES
 
 all: tmp $(NAME)
 
 $(NAME) :
-	@gcc -o $(NAME) $(CFLAGS) -lmlx libft/libft.a get_next_line/get_next_line.c $(SRCDIR)/$(SRC) srcs/display.c srcs/draw_map.c srcs/line.c srcs/fdf_malloc.c srcs/parsing.c $(ADDFLAGS)
+	@$(CC) -o $(NAME) $(CFLAGS) $(MLX) $(LIB_FT) $(GNL) $(SRC) $(ADDFLAGS)
+	@echo "PP\r"
+	@echo "PPTT\r"
+	@echo "PPYYYRR\r"
 	@echo "\033[0;32mFDF's program Created.\033[0m"
+
 # besoin de compiler la lib avant fdf 
 
 tmp : 
