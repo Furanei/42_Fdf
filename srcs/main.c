@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 23:17:51 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/20 00:55:11 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/20 23:17:55 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int main(int ac, char **av)
 	// 	data_map->y++;
 	// 	write(1, "\n", 1);
 	// }
-	data_map->x = 0;
-	data_map->y = 0;
+	data_map->x_map = 0;
+	data_map->y_map = 0;
 	//----------test--------------
 	data_map->mlx = mlx_init();
 	data_map->win = mlx_new_window(data_map->mlx, data_map->width_window, data_map->height_window, TITLE_WINDOW);

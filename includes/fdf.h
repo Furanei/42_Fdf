@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 03:48:11 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/20 00:49:59 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/20 23:14:02 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define VALUE_VAR_X			30
 # define VALUE_VAR_Y			20
 # define VALUE_VAR_Z			3
+# define VALUE_VAR			10
 
 # define LOG_CLEAR		\033[2K
 # define LOG_UP			\033[A
@@ -56,8 +57,8 @@ typedef struct		s_3d
 */
 	void	*mlx;//used on display
 	void	*win;//used on display
-	int		y;//used on draw_line
-	int		x;//used on draw_line
+	int		y_map;//used on draw_line
+	int		x_map;//used on draw_line
 
 	char	**s;//used on saved_map with split
 	int		**map;//used
@@ -73,6 +74,7 @@ typedef struct		s_3d
 	int		start_x;
 	int		start_y;
 
+	int		value;
 	int		value_z;
 	int		decal_x;
 	int		decal_y;
@@ -116,10 +118,10 @@ t_3d		*read_map(char *s, t_3d *d);
 t_3d		*t_3d_malloc(t_3d *d);
 void		display(t_3d *d);
 void		draw_map(t_3d *d);
-void		draw_line(t_3d *d);
+// void		draw_line(t_3d *d);
+void    draw_line(t_3d *d, t_fxy *a, t_fxy *b);
 t_dl		*t_dl_malloc(t_dl *l);
 void		pointer_t_dl(t_3d *d, t_dl *l, t_fxy a, t_fxy b);
-int			ft_abs(int n);
 int			pixel_calc(t_3d *d, char option, int right, int down);
 int			my_key_funct(int keycode, t_3d *d);
 void	ft_error(char *file, char *func, int line, char *s);

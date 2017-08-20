@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 18:54:30 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/20 01:16:31 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/21 00:12:17 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ int		my_key_funct(int keycode, t_3d *d)
 
 	if (keycode == KEY_ESCAPE)
 		exit (0);
+	if (keycode == KEY_PAD_ADD)
+		d->value+=1;
+	if (keycode == KEY_PAD_SUB)
+		d->value-=1;
 	if (keycode == KEY_E)
-		d->value_z -= 5;
+		d->value_z -= 2;
 	if (keycode == KEY_Q)
-		d->value_z += 5;
+		d->value_z += 2;
 	if (keycode == KEY_S)
 		d->decal_y += 5;
 	if (keycode == KEY_W)
