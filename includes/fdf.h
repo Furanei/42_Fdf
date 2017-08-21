@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 03:48:11 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/20 23:14:02 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/21 03:09:29 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,53 +78,43 @@ typedef struct		s_3d
 	int		value_z;
 	int		decal_x;
 	int		decal_y;
-	int color;
+	int 	color;
+	int 	angle_x;
+	int		angle_y;
 /*
 *donnee
 */
-	int			m;
-	char		higher;
 
 	int			var_x;//used on draw_line
 	int 		var_y;//used on draw_line
 	int			d_x;
 	int			d_y;
-}                   t_3d;
+}				t_3d;
 
 typedef struct		s_fxy
 {
 	int		x;
 	int		y;
+	int		z;
 }					t_fxy;
 
-typedef struct  	s_dl
+typedef struct		s_rotation
 {
-	int		d_a;
-	int 	*a;
-	int		d_b;
-	int 	*b;
-	int		a1;
-	int		a2;
-	int		b1;
-	int		b2;
-	double	m;
-	int		pixel;
-	double	gauge;
-	int		add_a;
-	int		add_b;
-}					t_dl;
+	double			x;
+	double			y;
+	double			z;
+}					t_rotation;
+
+t_fxy			rotate(t_fxy fxy, double a, double b, double c);
 
 t_3d		*read_map(char *s, t_3d *d);
 t_3d		*t_3d_malloc(t_3d *d);
 void		display(t_3d *d);
 void		draw_map(t_3d *d);
-// void		draw_line(t_3d *d);
-void    draw_line(t_3d *d, t_fxy *a, t_fxy *b);
-t_dl		*t_dl_malloc(t_dl *l);
-void		pointer_t_dl(t_3d *d, t_dl *l, t_fxy a, t_fxy b);
-int			pixel_calc(t_3d *d, char option, int right, int down);
+void		draw_line(t_3d *d, t_fxy *a, t_fxy *b);
 int			my_key_funct(int keycode, t_3d *d);
-void	ft_error(char *file, char *func, int line, char *s);
+
+void		ft_error(char *file, char *func, int line, char *s);
 
 #endif
 

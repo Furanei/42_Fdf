@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 18:54:30 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/21 00:12:17 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/21 03:25:51 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,18 @@ int		my_key_funct(int keycode, t_3d *d)
 		d->decal_x -= 5;
 	if (keycode == KEY_D)
 		d->decal_x += 5;
+	if (keycode == KEY_P)
+	{
+		d->angle_x = 2;
+		d->angle_y = 3;
+	}
+	if (keycode == KEY_O)
+	{
+		d->angle_x = 0;
+		d->angle_y = 0;
+	}
 	d->color = key_color(keycode, d->color);
-	// mlx_pixel_put(d->mlx, d->win, 200 + d->y, 200 + d->x, 0xFFFFFF);
+	// mlx_pixel_put(d->mlx, d->win, 200 + d->y, 200 + d->x, 0xFFFFFF);`
 	mlx_clear_window(d->mlx, d->win);
 	draw_map(*&d);
-	return (0);
-}
+	return (0);}

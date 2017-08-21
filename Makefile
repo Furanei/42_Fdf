@@ -6,7 +6,7 @@
 #    By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 16:27:03 by mbriffau          #+#    #+#              #
-#    Updated: 2017/08/20 00:10:23 by mbriffau         ###   ########.fr        #
+#    Updated: 2017/08/21 01:51:00 by mbriffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC = srcs/main.c \
 		srcs/fdf_malloc.c \
 		srcs/key_function.c \
 		srcs/parsing.c \
+		srcs/rotation.c \
 		srcs/ft_error.c
 
 OBJ = $(SRC:.c=.o)
@@ -79,9 +80,6 @@ all: tmp $(NAME)
 
 $(NAME) :
 	@$(CC) -o $(NAME) $(CFLAGS) $(MLX) $(LIB_FT) $(GNL) $(SRC) $(ADDFLAGS)
-	@echo "PP\r"
-	@echo "PPTT\r"
-	@echo "PPYYYRR\r"
 	@echo "\033[0;32mFDF's program Created.\033[0m"
 
 # besoin de compiler la lib avant fdf 
