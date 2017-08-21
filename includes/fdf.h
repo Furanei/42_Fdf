@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 03:48:11 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/21 03:09:29 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/21 16:23:35 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,16 @@ typedef struct		s_3d
 	int		height_map;//used
 	int		start_x;
 	int		start_y;
+	int 	start_y2;
 
 	int		value;
 	int		value_z;
 	int		decal_x;
 	int		decal_y;
 	int 	color;
-	int 	angle_x;
-	int		angle_y;
+	int 	angle;
+	
+	int option_d;
 /*
 *donnee
 */
@@ -113,7 +115,7 @@ void		display(t_3d *d);
 void		draw_map(t_3d *d);
 void		draw_line(t_3d *d, t_fxy *a, t_fxy *b);
 int			my_key_funct(int keycode, t_3d *d);
-
+int color_choice(int color);
 void		ft_error(char *file, char *func, int line, char *s);
 
 #endif

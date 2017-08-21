@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 04:25:10 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/21 03:06:59 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/21 15:49:46 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ t_3d	*t_3d_malloc(t_3d *d)
 	d->width_map = 0;
 	d->decal_x = 0;
 	d->decal_y = 0;
-	d->value_z= 0;
+	d->value_z= 1;
 	d->value = 10;
-	d->angle_x = 0;
-	d->angle_y = 0;
+	d->angle = 0;
 	d->color = WHITE;
 	return (d);
 }

@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 18:58:48 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/19 19:09:07 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/21 15:38:05 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,19 @@ int		color(int value_z, int index)
 		return (RED);
 	else
 		return (WHITE);
+}
+
+int color_choice(int color)
+{
+	if (color == WHITE)
+		color = YELLOW;
+	else if (color == YELLOW)
+		color = GREEN;
+	else if (color == GREEN)
+		color = BLUE;
+	else if (color == BLUE)
+		color = RED;
+	else if (color == RED)
+		color = WHITE;
+	return (color);
 }

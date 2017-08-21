@@ -6,7 +6,7 @@
 #    By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 16:27:03 by mbriffau          #+#    #+#              #
-#    Updated: 2017/08/21 01:51:00 by mbriffau         ###   ########.fr        #
+#    Updated: 2017/08/21 15:38:49 by mbriffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC = srcs/main.c \
 		srcs/key_function.c \
 		srcs/parsing.c \
 		srcs/rotation.c \
-		srcs/ft_error.c
+		srcs/ft_error.c \
+		srcs/color.c
 
 OBJ = $(SRC:.c=.o)
 # **************************************************************************** #
