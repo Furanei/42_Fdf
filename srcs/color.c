@@ -6,11 +6,11 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 18:58:48 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/21 15:38:05 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/22 00:10:38 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fdf.h"
+#include "../includes/fdf.h"
 
 int		color(int value_z, int index)
 {
@@ -20,7 +20,7 @@ int		color(int value_z, int index)
 		return (WHITE);
 }
 
-int color_choice(int color)
+int		color_choice(int color)
 {
 	if (color == WHITE)
 		color = YELLOW;

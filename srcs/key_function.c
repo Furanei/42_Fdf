@@ -6,14 +6,13 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 18:54:30 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/21 15:49:18 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/09/09 16:46:08 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-// #define TEST "./file"
 
-static int key_color(int keycode, int color)
+static int	key_color(int keycode, int color)
 {
 	keycode == KEY_PAD_0 ? color = WHITE : 0;
 	keycode == KEY_PAD_1 ? color = RED : 0;
@@ -28,38 +27,24 @@ static int key_color(int keycode, int color)
 	return (color);
 }
 
-int		my_key_funct(int keycode, t_3d *d)
+int			my_key_funct(int keycode, t_3d *d)
 {
 	if (keycode == KEY_ESCAPE)
-		exit (0);
-	else if (keycode == KEY_PAD_ADD)
-		d->value+=1;
-	else if (keycode == KEY_PAD_SUB)
-		d->value-=1;
-	else if (keycode == KEY_E)
-		d->value_z -= 1;
-	else if (keycode == KEY_Q)
-		d->value_z += 1;
-	else if (keycode == KEY_S)
-		d->decal_y += 5;
-	else if (keycode == KEY_W)
-		d->decal_y -= 5;
-	else if (keycode == KEY_A)
-		d->decal_x -= 5;
-	else if (keycode == KEY_D)
-		d->decal_x += 5;
-	else if (keycode == KEY_1)
+		exit(0);
+	if (keycode == KEY_1)
 		d->option_d = (d->option_d ? 0 : 1);
-	else if (keycode == KEY_P)
-	{
-		d->angle = 1;
-	}
-	else if (keycode == KEY_O)
-	{
-		d->angle = 0;
-	}
+	(keycode == KEY_PAD_ADD) ? d->value += 1 : 0;
+	(keycode == KEY_PAD_SUB) ? d->value -= 1 : 0;
+	(keycode == KEY_E) ? d->value_z -= 1 : 0;
+	(keycode == KEY_Q) ? d->value_z += 1 : 0;
+	(keycode == KEY_S) ? d->decal_y += 5 : 0;
+	(keycode == KEY_W) ? d->decal_y -= 5 : 0;
+	(keycode == KEY_A) ? d->decal_x -= 5 : 0;
+	(keycode == KEY_D) ? d->decal_x += 5 : 0;
+	(keycode == KEY_P) ? d->angle = 1 : 0;
+	(keycode == KEY_O) ? d->angle = 0 : 0;
 	d->color = key_color(keycode, d->color);
-	// mlx_pixel_put(d->mlx, d->win, 200 + d->y, 200 + d->x, 0xFFFFFF);`
 	mlx_clear_window(d->mlx, d->win);
 	draw_map(*&d);
-	return (0);}
+	return (0);
+}

@@ -6,13 +6,13 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 20:55:01 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/21 03:27:10 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/09/09 17:35:15 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static t_3d		*saved_map(t_3d *d, int n_line)
+static t_3d			*saved_map(t_3d *d, int n_line)
 {
 	if (d->width_map == 0)
 	{
@@ -31,17 +31,29 @@ static t_3d		*saved_map(t_3d *d, int n_line)
 	return (d);
 }
 
-t_3d		*read_map(char *s, t_3d *d)
+static inline t_3d	*limit_window(t_3d *d)
+{
+	d->width_window = (d->width_map + (d->width_map / 3)) * VALUE_VAR_X;
+	d->width_window = d->width_window > 2555 ? 2555 : d->width_window;
+	d->height_window = (d->height_map + (d->height_map / 2))
+	* (VALUE_VAR_Y + VALUE_VAR_Z);
+	d->height_window = d->height_window > 1380 ? 1380 : d->height_window;
+	return (d);
+}
+
+t_3d				*read_map(char *s, t_3d *d)
 {
 	char	*line;
 	int		n_line;
 	int		fd;
 
 	n_line = 0;
-	if(!(fd = open(s, O_RDONLY)))
-		return (0);
+	if (!s || !(fd = open(s, O_RDONLY)))
+		exit(0);
 	while (get_next_line(fd, &line) == 1)
 	{
+		// if (!(ft_isdigit(line[0])))
+		// 	exit(0);
 		d->height_map++;
 		free(line);
 	}
@@ -56,10 +68,7 @@ t_3d		*read_map(char *s, t_3d *d)
 		free(line);
 		n_line++;
 	}
-	d->width_window = (d->width_window = (d->width_map + (d->width_map /3)) * VALUE_VAR_X) > 2555 ?
-	2555 : d->width_window ;
-	d->height_window = (d->height_window = (d->height_map + (d->height_map / 2)) * (VALUE_VAR_Y + VALUE_VAR_Z)) > 1380 ?
-	1380 : d->height_window;
+	limit_window(&*d);
 	free((char**)d->s);
 	return (d);
 }

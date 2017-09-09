@@ -6,11 +6,11 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:23:37 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/08/20 00:20:09 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/08/22 00:10:53 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fdf.h"
+#include "../includes/fdf.h"
 
 void	display(t_3d *d)
 {
