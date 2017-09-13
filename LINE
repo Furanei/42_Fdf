@@ -42,4 +42,6 @@ void line(int x0, int y0, int x1, int y1) {
   }
 }
 
-Il reste a ne pas lire les maps invalide
+Makefile valide, compile gnl lib + clean 
+fclean
+fichier vide error

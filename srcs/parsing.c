@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 20:55:01 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/09/09 17:35:15 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/09/13 18:59:38 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,69 @@ static inline t_3d	*limit_window(t_3d *d)
 	return (d);
 }
 
-t_3d				*read_map(char *s, t_3d *d)
+int					is_fdf_file(char *s)
 {
-	char	*line;
-	int		n_line;
-	int		fd;
+	int fd;
+	int len;
 
-	n_line = 0;
 	if (!s || !(fd = open(s, O_RDONLY)))
 		exit(0);
-	while (get_next_line(fd, &line) == 1)
-	{
-		// if (!(ft_isdigit(line[0])))
-		// 	exit(0);
-		d->height_map++;
-		free(line);
-	}
-	close(fd);
-	fd = open(s, O_RDONLY);
-	if (!(d->map = (int **)malloc(sizeof(int *) * d->height_map)))
-		return (0);
+	len = ft_strlen(s);
+	len = len - 4;
+	if (len && (ft_strequ(".fdf", &s[len])))
+		return (fd);
+	exit(0);
+}
+
+static inline t_3d	*saved_map_loop(int fd, char *line, t_3d *d, int n_line)
+{
+	int		last;
+	int		n_word;
+	int		lock;
+
+	last = 0;
+	n_word = 0;
+	lock = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		d->s = ft_strsplit(line, ' ');
+		while (d->s[n_word])
+			n_word++;
+		if (n_word != last && lock)
+			ft_error(INFO, 0);
+		last = n_word;
+		lock = 1;
+		n_word = 0;
 		d = saved_map(&*d, n_line);
 		free(line);
 		n_line++;
 	}
+	return (d);
+}
+
+t_3d				*read_map(char *s, t_3d *d)
+{
+	char	*line;
+	int		n_line;
+	int		ret;
+	int		total;
+
+	total = 0;
+	n_line = 0;
+	d->fd = is_fdf_file(s);
+	while ((ret = get_next_line(d->fd, &line)) == 1)
+	{
+		d->height_map++;
+		free(line);
+		total += ret;
+	}
+	if (!total)
+		exit(0);
+	close(d->fd);
+	d->fd = open(s, O_RDONLY);
+	if (!(d->map = (int **)malloc(sizeof(int *) * d->height_map)))
+		return (0);
+	saved_map_loop(d->fd, line, &*d, n_line);
 	limit_window(&*d);
 	free((char**)d->s);
 	return (d);

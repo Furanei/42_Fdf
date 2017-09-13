@@ -6,7 +6,7 @@
 #    By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 16:27:03 by mbriffau          #+#    #+#              #
-#    Updated: 2017/08/21 15:38:49 by mbriffau         ###   ########.fr        #
+#    Updated: 2017/09/13 19:46:54 by mbriffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ SRC = srcs/main.c \
 		srcs/fdf_malloc.c \
 		srcs/key_function.c \
 		srcs/parsing.c \
-		srcs/rotation.c \
 		srcs/ft_error.c \
 		srcs/color.c
 
@@ -80,21 +79,30 @@ LOG_WHITE		= \033[1;37m
 all: tmp $(NAME)
 
 $(NAME) :
+	@make -C libft
+	@make -C get_next_line
 	@$(CC) -o $(NAME) $(CFLAGS) $(MLX) $(LIB_FT) $(GNL) $(SRC) $(ADDFLAGS)
-	@echo "\033[0;32mFDF's program Created.\033[0m"
+	@echo "\033[1;37mFDF's program \033[0;32mCreated.\033[0m"
 
-# besoin de compiler la lib avant fdf 
 
 tmp : 
 	@mkdir -p objs
 
-re : clean all
-
-
 clean :
-	rm $(NAME)
+	@make -C libft clean
+	@make -C get_next_line clean
+	@-/bin/rm -f objs
+	@echo "\033[1;37mFDF's .o files \033[1;31mdeleted.\033[0m"
 
-#gcc main.c ../libft/libft.a ../get_next_line/get_next_line.c -framework OpenGL -framework Appkit
+fclean : clean
+	@make -C libft fclean
+	@make -C get_next_line fclean
+	@-/bin/rm -f $(NAME)
+	@echo "\033[1;37mFDF's Project fully \033[1;31mcleaned.\033[0m"
+	
+	#@-/bin/rm -f get_next_line/get_next_line.o
+	#@-/bin/rm -f libft/libft.a
 
-#gcc main.c -lmlx ../libft/libft.a ../get_next_line/get_next_line.c parsing.c display.c 
-#draw_map.c -framework OpenGL -framework Appkit
+re : fclean all
+
+.PHONY: all clean fclean re
