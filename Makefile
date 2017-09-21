@@ -6,7 +6,7 @@
 #    By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 16:27:03 by mbriffau          #+#    #+#              #
-#    Updated: 2017/09/13 19:46:54 by mbriffau         ###   ########.fr        #
+#    Updated: 2017/09/22 00:41:18 by mbriffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,12 @@ SRCDIR = srcs
 OBJDIR = objs
 INCDIR = includes \
 			libft/includes \
-			get_next_line
 
 # Libs
 LIB_MLX = minilibx_macos/libmlx.a
 MLX = -lmlx
 LIB_FT = libft/libft.a
 
-GNL = get_next_line/get_next_line.c
 #####################
 # includes
 INC = libft
@@ -80,8 +78,7 @@ all: tmp $(NAME)
 
 $(NAME) :
 	@make -C libft
-	@make -C get_next_line
-	@$(CC) -o $(NAME) $(CFLAGS) $(MLX) $(LIB_FT) $(GNL) $(SRC) $(ADDFLAGS)
+	@$(CC) -o $(NAME) $(CFLAGS) $(MLX) $(LIB_FT) $(SRC) $(ADDFLAGS)
 	@echo "\033[1;37mFDF's program \033[0;32mCreated.\033[0m"
 
 
@@ -90,18 +87,13 @@ tmp :
 
 clean :
 	@make -C libft clean
-	@make -C get_next_line clean
-	@-/bin/rm -f objs
+	@-/bin/rm -rf objs
 	@echo "\033[1;37mFDF's .o files \033[1;31mdeleted.\033[0m"
 
 fclean : clean
 	@make -C libft fclean
-	@make -C get_next_line fclean
 	@-/bin/rm -f $(NAME)
 	@echo "\033[1;37mFDF's Project fully \033[1;31mcleaned.\033[0m"
-	
-	#@-/bin/rm -f get_next_line/get_next_line.o
-	#@-/bin/rm -f libft/libft.a
 
 re : fclean all
 

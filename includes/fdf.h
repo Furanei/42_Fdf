@@ -6,7 +6,7 @@
 /*   By: mbriffau <mbriffau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 19:49:05 by mbriffau          #+#    #+#             */
-/*   Updated: 2017/09/13 18:39:57 by mbriffau         ###   ########.fr       */
+/*   Updated: 2017/09/22 00:42:44 by mbriffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FDF_H
 
 # include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
 # include "mlx.h"
 # include "./keycode.h"
 # include "./colors.h"
